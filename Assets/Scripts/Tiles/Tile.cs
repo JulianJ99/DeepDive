@@ -38,6 +38,8 @@ public abstract class Tile : MonoBehaviour {
                 if (UnitManager.Instance.SelectedHero != null) {
                     var enemy = (BaseEnemy) OccupiedUnit;
                     Destroy(enemy.gameObject);
+                    this._isWalkable = true; this.OccupiedUnit = null;
+                    SetUnit(UnitManager.Instance.SelectedHero);
                     UnitManager.Instance.SetSelectedHero(null);
                 }
             }
@@ -51,10 +53,12 @@ public abstract class Tile : MonoBehaviour {
 
     }
 
-    public void SetUnit(BaseUnit unit) {
+    public void SetUnit(BaseUnit unit) {   
+        if(this == Walkable){
         if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;
         unit.transform.position = transform.position;
         OccupiedUnit = unit;
         unit.OccupiedTile = this;
+        }
     }
 }

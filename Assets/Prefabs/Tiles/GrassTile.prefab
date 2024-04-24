@@ -79,7 +79,7 @@ MonoBehaviour:
   _highlight: {fileID: 5368229317714600807}
   _isWalkable: 1
   OccupiedUnit: {fileID: 0}
-  _baseColor: {r: 0, g: 0.9811321, b: 0.016338384, a: 1}
+  _baseColor: {r: 0, g: 0.7372549, b: 0.016338384, a: 1}
   _offsetColor: {r: 0, g: 0.46226418, b: 0.061708566, a: 1}
 --- !u!212 &540262348938284711 stripped
 SpriteRenderer:

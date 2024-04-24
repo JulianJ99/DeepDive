@@ -97,6 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86eec147aea5699418526fb95d13e150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: 
+  UnitName: Ghoul
   OccupiedTile: {fileID: 0}
-  Faction: 0
+  Faction: 1
+  health: 30
+  attack: 6
+  defense: 0
+  movementSpeed: 5

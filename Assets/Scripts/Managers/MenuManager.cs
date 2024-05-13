@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour {
     public static MenuManager Instance;
 
-    [SerializeField] private GameObject _selectedHeroObject,_tileObject,_tileUnitObject;
+    [SerializeField] private GameObject _selectedHeroObject,_selectedHeroMovementObject,_tileObject,_tileUnitObject;
 
     void Awake() {
         Instance = this;
@@ -38,5 +38,7 @@ public class MenuManager : MonoBehaviour {
 
         _selectedHeroObject.GetComponentInChildren<Text>().text = hero.UnitName;
         _selectedHeroObject.SetActive(true);
+        _selectedHeroMovementObject.SetActive(true);
+        _selectedHeroMovementObject.GetComponentInChildren<Text>().text += hero.movementRange;
     }
 }

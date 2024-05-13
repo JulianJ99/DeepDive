@@ -7,46 +7,44 @@ public class BaseUnit : MonoBehaviour {
     public Tile OccupiedTile;
     public Faction Faction;
 
-    [SerializeField] private int health;
+    public Transform movePoint;
 
-    [SerializeField] private int attack;
+    [SerializeField] public int health;
 
-    [SerializeField] private int defense;
+    [SerializeField] public int attack;
 
-    [SerializeField] private int movementRange;
+    [SerializeField] public int defense;
 
-    [SerializeField] private int speed;
+    [SerializeField] public int movementRange;
+
+    [SerializeField] public float moveSpeed = 5f;
+
+    public LayerMask whatStopsMovement;
 
     public void CharacterMovement(){
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            if (UnitManager.Instance.SelectedHero != null) {
-            Debug.Log("Selected");
-            UnitManager.Instance.SelectedHero.transform.position += Vector3.left * speed * Time.deltaTime;
-            }
-        }
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
-            if (UnitManager.Instance.SelectedHero != null) {
-            Debug.Log("Selected");
-            UnitManager.Instance.SelectedHero.transform.position += Vector3.right * speed * Time.deltaTime;
+            
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+            {
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
+                {
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                    movementRange =- 1;
+                }
+            } 
+            
+            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+            {
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Vertical"), 0f, 0f), .2f, whatStopsMovement))
+                {
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Vertical"), 0f, 0f);
+                    movementRange =- 1;
+                }
             }
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            if (UnitManager.Instance.SelectedHero != null) {
-            Debug.Log("Selected");
-            UnitManager.Instance.SelectedHero.transform.position += Vector3.up * speed * Time.deltaTime;
-            }
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            if (UnitManager.Instance.SelectedHero != null) {
-            Debug.Log("Selected");
-            UnitManager.Instance.SelectedHero.transform.position += Vector3.down * speed * Time.deltaTime;
-            }
-        }
-
+            
+        } 
     }
 }

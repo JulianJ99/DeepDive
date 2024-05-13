@@ -13,6 +13,6 @@ public class BaseHero : BaseUnit
     // Update is called once per frame
     void Update()
     {
-        CharacterMovement();
+        
     }
 }

@@ -7,7 +7,7 @@ public class Hero1 : BaseHero
     // Start is called before the first frame update
     void Start()
     {
-        
+        movePoint.parent = null;
     }
 
     // Update is called once per frame

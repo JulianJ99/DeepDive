@@ -12,6 +12,10 @@ public class MenuManager : MonoBehaviour {
         Instance = this;
     }
 
+    void Update(){
+        
+    }
+
     public void ShowTileInfo(Tile tile) {
 
         if (tile == null)
@@ -39,6 +43,6 @@ public class MenuManager : MonoBehaviour {
         _selectedHeroObject.GetComponentInChildren<Text>().text = hero.UnitName;
         _selectedHeroObject.SetActive(true);
         _selectedHeroMovementObject.SetActive(true);
-        _selectedHeroMovementObject.GetComponentInChildren<Text>().text += hero.movementRange;
+        _selectedHeroMovementObject.GetComponentInChildren<Text>().text = "Remaining movement: " + hero.movementRange;
     }
 }

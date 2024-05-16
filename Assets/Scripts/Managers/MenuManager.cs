@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour {
     public static MenuManager Instance;
 
-    [SerializeField] private GameObject _selectedHeroObject,_selectedHeroMovementObject,_tileObject,_tileUnitObject;
+    [SerializeField] private GameObject _selectedHeroObject,_selectedHeroMovementObject,_selectedHeroMovementResetObject,_tileObject,_tileUnitObject;
 
     void Awake() {
         Instance = this;
@@ -41,8 +41,21 @@ public class MenuManager : MonoBehaviour {
         }
 
         _selectedHeroObject.GetComponentInChildren<Text>().text = hero.UnitName;
+        _selectedHeroMovementObject.GetComponentInChildren<Text>().text = "Remaining movement: " + hero.movementRange;
         _selectedHeroObject.SetActive(true);
         _selectedHeroMovementObject.SetActive(true);
+        
+    }
+
+    public void ChangeMovementInfo(BaseUnit hero){
         _selectedHeroMovementObject.GetComponentInChildren<Text>().text = "Remaining movement: " + hero.movementRange;
+    }
+
+    public void ToggleMovementReset(){
+        _selectedHeroMovementResetObject.SetActive(true);
+    }
+
+    public void MovementReset(){
+        _selectedHeroMovementResetObject.SetActive(false);
     }
 }

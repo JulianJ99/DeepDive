@@ -34,22 +34,22 @@ public abstract class Tile : MonoBehaviour {
 
         if (OccupiedUnit != null) {
             if(OccupiedUnit.Faction == Faction.Hero) UnitManager.Instance.SetSelectedHero((BaseHero)OccupiedUnit);
-            else {
-                if (UnitManager.Instance.SelectedHero != null) {
-                    var enemy = (BaseEnemy) OccupiedUnit;
-                    Destroy(enemy.gameObject);
-                    this._isWalkable = true; this.OccupiedUnit = null;
-                    SetUnit(UnitManager.Instance.SelectedHero);
-                    UnitManager.Instance.SetSelectedHero(null);
-                }
-            }
+            // else {
+            //     if (UnitManager.Instance.SelectedHero != null) {
+            //         var enemy = (BaseEnemy) OccupiedUnit;
+            //         Destroy(enemy.gameObject);
+            //         this._isWalkable = true; this.OccupiedUnit = null;
+            //         SetUnit(UnitManager.Instance.SelectedHero);
+            //         UnitManager.Instance.SetSelectedHero(null);
+            //     }
+            // }
         }
-        else {
-            if (UnitManager.Instance.SelectedHero != null) {
-                SetUnit(UnitManager.Instance.SelectedHero);
-                UnitManager.Instance.SetSelectedHero(null);
-            }
-        }
+        // else {
+        //     if (UnitManager.Instance.SelectedHero != null) {
+        //         SetUnit(UnitManager.Instance.SelectedHero);
+        //         UnitManager.Instance.SetSelectedHero(null);
+        //     }
+        // }
 
     }
 

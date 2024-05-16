@@ -8,6 +8,8 @@ public class Hero1 : BaseHero
     void Start()
     {
         movePoint.parent = null;
+        originalMovePoint.parent = null;
+        originalMovement = movementRange;
     }
 
     // Update is called once per frame

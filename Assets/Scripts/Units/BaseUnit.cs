@@ -57,8 +57,8 @@ public class BaseUnit : MonoBehaviour {
             }
             else{
                 movePoint.position = transform.position;
-
-                isMoving = true;
+                return;
+                
                 
             }
        
